@@ -1,0 +1,9 @@
+node_modules/
+client/dist/
+
+# Secrets and local data
+.env
+data/
+
+# Local editor and Claude Code settings
+.claude/

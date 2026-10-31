@@ -1,0 +1,353 @@
+/* Logical properties (inline-start/end) keep the layout right in both left-to-right and right-to-left. */
+
+body {
+  background: #f5f6f8;
+}
+
+html[lang="fa"] body {
+  font-family: "Vazirmatn", Tahoma, system-ui, sans-serif;
+}
+
+.app-header {
+  background: #1d2330;
+  padding-block: 0.6rem;
+}
+
+.app-header .nav-link {
+  color: #c9cfdb;
+}
+
+.app-header .nav-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.app-header .nav-link.active {
+  background: #3b5bdb;
+  color: #fff;
+}
+
+.main {
+  padding: 1.5rem 2rem;
+  max-width: 1600px;
+  margin-inline: auto;
+}
+
+[dir="rtl"] .flip-rtl {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+.agent-card.off,
+.room-agent.off {
+  opacity: 0.55;
+}
+
+.kind-badge {
+  font-family: ui-monospace, monospace;
+  min-width: 1.6rem;
+}
+
+/* Control room */
+.room-agents {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  padding-inline-end: 0.25rem;
+}
+
+.room-agent {
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.room-agent.working {
+  border-color: #3b5bdb;
+  box-shadow: 0 0 0 3px rgba(59, 91, 219, 0.15);
+}
+
+.status-dot {
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 50%;
+  background: #ced4da;
+  flex-shrink: 0;
+}
+
+.status-dot.on {
+  background: #3b5bdb;
+  animation: pulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.agent-log {
+  list-style: none;
+  padding: 0;
+  font-family: ui-monospace, monospace;
+  font-size: 0.72rem;
+  color: #6c757d;
+}
+
+.agent-log li {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.flow-hint {
+  color: #495057;
+  background: #eef2ff;
+  border-radius: 0.5rem;
+  padding: 0.4rem 0.75rem;
+}
+
+/* Conversation */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-bottom: 1rem;
+}
+
+.msg {
+  border-radius: 0.75rem;
+  padding: 0.85rem 1rem;
+  background: #fff;
+  border: 1px solid #e3e6ec;
+  max-width: 920px;
+}
+
+.msg.user {
+  align-self: flex-end;
+  background: #3b5bdb;
+  color: #fff;
+  border-color: #3b5bdb;
+}
+
+.msg.user.approval {
+  background: #198754;
+  border-color: #198754;
+}
+
+.msg.user .markdown a {
+  color: #fff;
+}
+
+.msg.plan {
+  border: 2px solid #3b5bdb;
+}
+
+.msg.review {
+  border-inline-start: 4px solid #0dcaf0;
+}
+
+.msg.error {
+  background: #fff5f5;
+  border-color: #f5c2c7;
+  color: #842029;
+}
+
+.msg.system {
+  align-self: center;
+  background: transparent;
+  border: none;
+  color: #6c757d;
+  padding: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.activity {
+  font-size: 0.8rem;
+  color: #6c757d;
+  max-width: 920px;
+}
+
+.activity summary {
+  cursor: pointer;
+}
+
+.activity ul {
+  margin: 0.35rem 0 0;
+  padding-left: 1.2rem;
+  font-family: ui-monospace, monospace;
+  word-break: break-all;
+}
+
+.markdown > :last-child {
+  margin-bottom: 0;
+}
+
+.markdown pre {
+  background: #f1f3f5;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  direction: ltr;
+  text-align: left;
+}
+
+.msg.user .markdown pre {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.markdown table {
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+}
+
+.markdown th,
+.markdown td {
+  border: 1px solid #dee2e6;
+  padding: 0.3rem 0.6rem;
+}
+
+.composer {
+  position: sticky;
+  bottom: 0;
+  background: #f5f6f8;
+  padding: 0.75rem 0 1rem;
+}
+
+/* Agent Studio Code: the changes panel */
+.changes-panel {
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  padding-inline-end: 0.25rem;
+}
+
+.change-card {
+  margin-bottom: 0.5rem;
+}
+
+.change-card.pending {
+  border-color: #f0b429;
+}
+
+.change-path {
+  font-family: ui-monospace, monospace;
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.change-diff {
+  max-height: 16rem;
+  overflow: auto;
+  margin-top: 0.4rem;
+  border: 1px solid #e3e6ec;
+  border-radius: 0.4rem;
+  background: #fff;
+  font-family: ui-monospace, monospace;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.diff-add,
+.diff-del {
+  white-space: pre;
+  width: max-content;
+  min-width: 100%;
+  padding-inline: 0.4rem;
+}
+
+.diff-add {
+  background: #e6f6ea;
+}
+
+.diff-del {
+  background: #fdecec;
+}
+
+.diff-sign {
+  display: inline-block;
+  width: 1rem;
+  color: #6c757d;
+  user-select: none;
+}
+
+/* Choosing results for a shared conclusion */
+.converge-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid #e3e6ec;
+  border-radius: 0.5rem;
+  background: #fff;
+}
+
+.msg.joint {
+  border: 2px solid #198754;
+}
+
+/* Attachments: chips above the composer and under the user's message */
+.composer-files,
+.msg-files {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.msg-files {
+  margin-top: 0.5rem;
+}
+
+.file-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 100%;
+  padding: 0.25rem 0.6rem;
+  border: 1px solid #dee2e6;
+  border-radius: 0.5rem;
+  background: #fff;
+  font-size: 0.8rem;
+}
+
+.composer-files .file-chip .text-truncate {
+  max-width: 14rem;
+}
+
+.msg.user .file-chip {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.btn-close-sm {
+  width: 0.5rem;
+  height: 0.5rem;
+  background-size: 0.5rem;
+}
+
+.skill-md {
+  font-family: ui-monospace, monospace;
+  font-size: 0.85rem;
+}
+
+.min-w-0 {
+  min-width: 0;
+}
+
+@media (max-width: 991px) {
+  .room-agents {
+    position: static;
+    max-height: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .main {
+    padding: 1rem;
+  }
+}
